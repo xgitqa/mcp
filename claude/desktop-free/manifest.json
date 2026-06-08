@@ -1,0 +1,51 @@
+{
+  "manifest_version": "0.3",
+  "name": "neighborhood-intelligence-europe",
+  "display_name": "Neighborhood Intelligence — Europe (Free)",
+  "version": "2.0.0",
+  "description": "Comprehensive neighborhood analysis for any European location — walkability, air quality, schools, flood risk, transport, cycling, safety, healthcare, noise, and more. 100% free, no API key required.",
+  "long_description": "Full neighborhood due diligence for any address in Europe using open data sources only — no API key, no subscription, no cost.\n\nTools across 12 domains:\n• Geocoding: address resolution anywhere in Europe\n• Walkability: amenity density score (0–100)\n• Air Quality: EU AQI, PM2.5, PM10, NO₂, O₃ via Copernicus CAMS\n• Public Transport: bus/tram/metro/train/ferry score (0–100)\n• Schools: kindergarten through university listings\n• Green Spaces: parks, forests, playgrounds score (0–100)\n• Flood Risk: elevation + waterway proximity assessment\n• Neighborhood Character: affluence & vibrancy proxy scores\n• Cycling Infrastructure: dedicated lanes, bike parking (0–100)\n• Safety: police, fire, hospital proximity\n• Healthcare: hospitals, pharmacies, GPs, dentists\n• Noise Sources: roads, rail, airport, industrial, nightlife\n\nData sources (all free, open):\n• OpenStreetMap / Overpass API\n• Nominatim (geocoding)\n• Open-Meteo + Copernicus CAMS (air quality)\n• Open-Meteo Elevation / NASA SRTM (flood risk)\n\nCoverage: all of Europe. Quality depends on local OSM mapping completeness.",
+  "author": {
+    "name": "Open Source — free for everyone"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xgitqa/mcp.git"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/index.js"]
+    }
+  },
+  "tools_generated": false,
+  "prompts_generated": false,
+  "keywords": [
+    "neighborhood",
+    "real-estate",
+    "europe",
+    "location-intelligence",
+    "walkability",
+    "air-quality",
+    "flood-risk",
+    "schools",
+    "public-transport",
+    "cycling",
+    "safety",
+    "healthcare",
+    "noise",
+    "openstreetmap",
+    "free",
+    "no-api-key",
+    "mcp"
+  ],
+  "license": "MIT",
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  }
+}

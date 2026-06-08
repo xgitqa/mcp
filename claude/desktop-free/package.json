@@ -1,0 +1,14 @@
+{
+  "name": "neighborhood-intelligence-europe",
+  "version": "2.0.0",
+  "description": "Free, open-data Neighborhood Intelligence for any European location — no API key required",
+  "type": "module",
+  "main": "server/index.js",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  }
+}
