@@ -1,0 +1,59 @@
+{
+  "manifest_version": "0.3",
+  "name": "quartiq",
+  "display_name": "Quartiq — European Neighbourhood Intelligence",
+  "version": "1.0.0",
+  "description": "Free neighbourhood intelligence for Europe — walkability, air quality, flood/fire risk, demographics, schools, and more. No API key required.",
+  "long_description": "Neighbourhood due diligence for home buyers, renters, real estate professionals, and location researchers across Europe.\n\nConnect Claude to free, open data sources and get instant neighbourhood analysis for any European address.\n\n6 tools — all scores 0–255:\n• geocode_location: geocode any address via Nominatim / OpenStreetMap\n• get_vibe: walkability, privacy, dog-friendliness, urban-rural character, visual appeal\n• get_environment: air quality (Copernicus CAMS), noise estimate, industrial proximity\n• get_demographics: NUTS3 regional population and age profile (Eurostat)\n• get_risk: flood safety (elevation + waterways) and fire risk (Angstrom Index)\n• get_schools: nearby schools, kindergartens, universities from OpenStreetMap\n\nData sources: OpenStreetMap/Overpass, Nominatim, Open-Meteo (NASA SRTM + Copernicus CAMS), Eurostat GISCO + Statistics API.\n\nCoverage: EU/EEA and any country with OpenStreetMap data. No account or API key needed.",
+  "author": {
+    "name": "xgitqa",
+    "url": "https://github.com/xgitqa"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xgitqa/quartiq.git"
+  },
+  "homepage": "https://github.com/xgitqa/quartiq",
+  "documentation": "https://github.com/xgitqa/quartiq#readme",
+  "support": "https://github.com/xgitqa/quartiq/issues",
+  "icon": "assets/icon-light.png",
+  "icons": [
+    { "src": "assets/icon-light.png", "size": "128x128", "theme": "light" },
+    { "src": "assets/icon-dark.png", "size": "128x128", "theme": "dark" }
+  ],
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/index.js"]
+    }
+  },
+  "tools_generated": false,
+  "prompts_generated": false,
+  "keywords": [
+    "neighborhood",
+    "neighbourhood",
+    "real-estate",
+    "home-buying",
+    "location-intelligence",
+    "europe",
+    "walkability",
+    "schools",
+    "flood-risk",
+    "fire-risk",
+    "air-quality",
+    "demographics",
+    "mcp",
+    "openstreetmap",
+    "open-data",
+    "no-api-key"
+  ],
+  "license": "MIT",
+  "compatibility": {
+    "platforms": ["darwin", "win32", "linux"],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  }
+}

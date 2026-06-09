@@ -1,0 +1,34 @@
+{
+  "name": "quartiq",
+  "version": "1.0.0",
+  "description": "Neighbourhood Intelligence for Europe — free, open data, no API key",
+  "type": "module",
+  "main": "server/index.js",
+  "license": "MIT",
+  "author": {
+    "name": "xgitqa",
+    "url": "https://github.com/xgitqa"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xgitqa/quartiq"
+  },
+  "homepage": "https://github.com/xgitqa/quartiq",
+  "bugs": {
+    "url": "https://github.com/xgitqa/quartiq/issues"
+  },
+  "keywords": [
+    "mcp",
+    "neighborhood-intelligence",
+    "europe",
+    "openstreetmap",
+    "real-estate",
+    "open-data"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.1"
+  }
+}
