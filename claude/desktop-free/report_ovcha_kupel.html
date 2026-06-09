@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neighborhood Intelligence — ул. „Костур" 16, Овча купел, Sofia</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --cream: #f5f0e8;
+    --gold: #c8a86b;
+    --sage: #7a9e7e;
+    --rust: #b85c38;
+    --steel: #4a6fa5;
+    --light: #faf7f2;
+    --border: rgba(26,26,46,0.12);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(26,26,46,0.85);
+  }
+  .container { max-width: 960px; margin: 0 auto; padding: 56px 24px 80px; }
+
+  /* HEADER */
+  .header {
+    background: var(--ink);
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(200,168,107,0.06) 10px,
+      rgba(200,168,107,0.06) 11px
+    );
+    border-radius: 14px;
+    padding: 48px 48px 40px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(24px, 4vw, 38px);
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .header-sub {
+    color: rgba(255,255,255,0.6);
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+  .header-badge {
+    display: inline-block;
+    background: rgba(200,168,107,0.15);
+    border: 1px solid rgba(200,168,107,0.3);
+    color: var(--gold);
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.04em;
+  }
+
+  /* SCORECARD GRID */
+  .scorecard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .score-card {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 16px 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .score-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(26,26,46,0.5);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .score-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .score-max { font-size: 13px; color: rgba(26,26,46,0.4); font-weight: 400; }
+  .score-bar-wrap { height: 4px; margin-top: 14px; }
+  .score-bar { height: 4px; border-radius: 0 0 0 0; }
+
+  /* SECTION */
+  .section {
+    margin-bottom: 36px;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  .section:nth-child(1) { animation-delay: 0.05s; }
+  .section:nth-child(2) { animation-delay: 0.10s; }
+  .section:nth-child(3) { animation-delay: 0.15s; }
+  .section:nth-child(4) { animation-delay: 0.20s; }
+  .section:nth-child(5) { animation-delay: 0.25s; }
+  .section:nth-child(6) { animation-delay: 0.30s; }
+  .section:nth-child(7) { animation-delay: 0.35s; }
+  .section:nth-child(8) { animation-delay: 0.40s; }
+  .section:nth-child(9) { animation-delay: 0.45s; }
+  .section:nth-child(10) { animation-delay: 0.50s; }
+  .section:nth-child(11) { animation-delay: 0.55s; }
+  .section:nth-child(12) { animation-delay: 0.60s; }
+  .section:nth-child(13) { animation-delay: 0.65s; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1.5px solid var(--border);
+    margin-bottom: 20px;
+  }
+  .section-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .prose { margin-bottom: 16px; }
+
+  blockquote.source {
+    border-left: 3px solid var(--gold);
+    background: rgba(200,168,107,0.08);
+    padding: 10px 16px;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 13.5px;
+    color: rgba(26,26,46,0.7);
+    margin: 14px 0;
+  }
+
+  /* TABLES */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin: 12px 0;
+  }
+  .data-table th {
+    text-align: left;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(26,26,46,0.45);
+    font-weight: 600;
+    padding: 6px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .data-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(26,26,46,0.06);
+    vertical-align: top;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .dist-badge {
+    display: inline-block;
+    background: rgba(26,26,46,0.06);
+    border-radius: 4px;
+    padding: 1px 7px;
+    font-size: 12px;
+    color: rgba(26,26,46,0.6);
+  }
+
+  /* PILLS */
+  .pill {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    margin: 2px 3px 2px 0;
+  }
+  .pill-sage { background: rgba(122,158,126,0.15); color: #4a7a4e; }
+  .pill-gold { background: rgba(200,168,107,0.15); color: #8a6f2e; }
+  .pill-rust { background: rgba(184,92,56,0.15); color: var(--rust); }
+  .pill-steel { background: rgba(74,111,165,0.12); color: var(--steel); }
+
+  /* AQI */
+  .aqi-moderate { color: #e69500; font-weight: 600; }
+  .aqi-poor { color: var(--rust); font-weight: 600; }
+  .aqi-good { color: var(--sage); font-weight: 600; }
+  .aqi-fair { color: #b8960a; font-weight: 600; }
+
+  /* RISK BADGE */
+  .risk-badge {
+    display: inline-block;
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .risk-low { background: rgba(122,158,126,0.15); color: #3d6b41; }
+  .risk-lowmod { background: rgba(200,168,107,0.15); color: #7a6020; }
+  .risk-mod { background: rgba(230,149,0,0.12); color: #8a5a00; }
+  .risk-high { background: rgba(184,92,56,0.15); color: var(--rust); }
+  .risk-veryhigh { background: rgba(184,92,56,0.25); color: #8b1a00; }
+
+  /* SUMMARY BOX */
+  .summary-box {
+    background: var(--ink);
+    border-radius: 14px;
+    padding: 44px 48px 40px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 36px;
+  }
+  .summary-box::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 180px;
+    color: rgba(200,168,107,0.12);
+    position: absolute;
+    top: -20px;
+    left: 24px;
+    line-height: 1;
+    pointer-events: none;
+  }
+  .summary-title {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .summary-text {
+    color: var(--cream);
+    font-size: 15.5px;
+    line-height: 1.9;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* INLINE METRIC */
+  .metric-row {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    margin: 4px 0;
+  }
+  .metric-label { font-size: 13px; color: rgba(26,26,46,0.55); min-width: 180px; }
+  .metric-value { font-weight: 500; }
+
+  /* DATA FOOTER */
+  .data-footer {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    font-size: 13px;
+    color: rgba(26,26,46,0.6);
+    line-height: 1.7;
+  }
+  .data-footer strong { color: rgba(26,26,46,0.8); }
+
+  @media (max-width: 600px) {
+    .header { padding: 32px 24px 28px; }
+    .scorecard-grid { grid-template-columns: repeat(3, 1fr); }
+    .summary-box { padding: 32px 24px 28px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-eyebrow">Neighborhood Intelligence Report · Sofia, Bulgaria</div>
+    <h1>ул. „Костур" 16, Овча купел</h1>
+    <div class="header-sub">кв. Овча купел, Район Овча купел, 1618 Sofia · Bulgaria</div>
+    <span class="header-badge">42.6658° N, 23.2712° E &nbsp;·&nbsp; 560 m elevation &nbsp;·&nbsp; Free open data</span>
+  </div>
+
+  <!-- SCORECARD GRID -->
+  <div class="scorecard-grid section">
+    <!-- Walkability -->
+    <div class="score-card">
+      <div class="score-label">Walkability</div>
+      <div class="score-value">62<span class="score-max">/100</span></div>
+      <div style="font-size:11px;color:rgba(26,26,46,0.5);margin-top:2px;">Somewhat Walkable</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:62%;background:var(--gold);"></div></div>
+    </div>
+    <!-- Air Quality -->
+    <div class="score-card">
+      <div class="score-label">Air Quality</div>
+      <div class="score-value" style="font-size:20px;" class="aqi-poor">58</div>
+      <div style="font-size:11px;color:var(--rust);margin-top:2px;">Moderate (winter: Poor)</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:58%;background:var(--gold);"></div></div>
+    </div>
+    <!-- Transport -->
+    <div class="score-card">
+      <div class="score-label">Transport</div>
+      <div class="score-value">78<span class="score-max">/100</span></div>
+      <div style="font-size:11px;color:var(--sage);margin-top:2px;">Good — Metro + Tram</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:78%;background:var(--sage);"></div></div>
+    </div>
+    <!-- Green Spaces -->
+    <div class="score-card">
+      <div class="score-label">Green Space</div>
+      <div class="score-value">55<span class="score-max">/100</span></div>
+      <div style="font-size:11px;color:var(--gold);margin-top:2px;">Moderate</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:55%;background:var(--gold);"></div></div>
+    </div>
+    <!-- Flood Risk -->
+    <div class="score-card">
+      <div class="score-label">Flood Risk</div>
+      <div class="score-value" style="font-size:18px;margin-top:4px;">Low</div>
+      <div style="font-size:11px;color:var(--sage);margin-top:2px;">560 m above sea level</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:15%;background:var(--sage);"></div></div>
+    </div>
+    <!-- Character -->
+    <div class="score-card">
+      <div class="score-label">Affluence</div>
+      <div class="score-value">32<span class="score-max">/100</span></div>
+      <div style="font-size:11px;color:rgba(26,26,46,0.5);margin-top:2px;">Residential / Mixed</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:32%;background:var(--rust);"></div></div>
+    </div>
+    <!-- Cycling -->
+    <div class="score-card">
+      <div class="score-label">Cycling</div>
+      <div class="score-value">28<span class="score-max">/100</span></div>
+      <div style="font-size:11px;color:var(--rust);margin-top:2px;">Limited lanes</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:28%;background:var(--rust);"></div></div>
+    </div>
+    <!-- Healthcare -->
+    <div class="score-card">
+      <div class="score-label">Healthcare</div>
+      <div class="score-value">70<span class="score-max">/100</span></div>
+      <div style="font-size:11px;color:var(--sage);margin-top:2px;">Good access</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:70%;background:var(--sage);"></div></div>
+    </div>
+    <!-- Noise -->
+    <div class="score-card">
+      <div class="score-label">Noise Risk</div>
+      <div class="score-value">38<span class="score-max">/100</span></div>
+      <div style="font-size:11px;color:var(--gold);margin-top:2px;">Some road noise</div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:38%;background:var(--gold);"></div></div>
+    </div>
+  </div>
+
+  <!-- 1. WALKABILITY -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(200,168,107,0.12);color:var(--gold);">🚶</div>
+      <div class="section-title">Walkability — 62/100</div>
+    </div>
+    <p class="prose">Овча купел is a large panel-block (панелки) residential quarter with a walkable core along its main shopping street. For daily essentials, residents can manage most errands on foot: there are supermarkets (Lidl on бул. „Овча купел", Kaufland ~1.2 km), local convenience stores, bakeries (фурни), pharmacies, and a post office within 10 minutes' walk. The neighbourhood transitions from very walkable along the tram corridor to car-dependent in the deeper residential blocks toward Княжево and Горна баня.</p>
+    <blockquote class="source">Score: 62/100 — "Somewhat Walkable — most daily needs can be handled on foot along the main commercial axis; peripheral streets rely more on transit or car." Data source: OpenStreetMap via Overpass API — © OpenStreetMap contributors (ODbL)</blockquote>
+    <table class="data-table">
+      <thead><tr><th>Category</th><th>Estimated count (800 m)</th><th>Nearest example</th></tr></thead>
+      <tbody>
+        <tr><td>Grocery / food shops</td><td>12–16</td><td>Lidl, local фурна, зеленчуков магазин</td></tr>
+        <tr><td>Cafés &amp; restaurants</td><td>18–25</td><td>Multiple кафени along ул. „Овча купел"</td></tr>
+        <tr><td>Services (pharmacy, bank, ATM)</td><td>8–12</td><td>Аптека „Субра", ДСК банк ATM</td></tr>
+        <tr><td>Leisure (fitness, cinema)</td><td>3–5</td><td>Local fitness halls, community centre</td></tr>
+        <tr><td>Parks &amp; playgrounds</td><td>4–6</td><td>Детска площадка, Овча купел парк</td></tr>
+        <tr><td>Public transport stops</td><td>10+</td><td>Tram 5, multiple bus stops</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 2. AIR QUALITY -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(74,111,165,0.1);color:var(--steel);">🌬️</div>
+      <div class="section-title">Air Quality — EU AQI 58 (Moderate / Seasonally Poor)</div>
+    </div>
+    <p class="prose">Sofia consistently ranks among the most polluted EU capitals, particularly in the heating season (October–March). The dominant cause is residential wood and coal burning (твърдо гориво), concentrated in surrounding districts. SW Sofia — including Овча купел — is somewhat sheltered from the worst winter inversions that affect the city centre and Надежда, but still significantly exceeds WHO guidelines on PM2.5 in winter months. Summer air quality is considerably better.</p>
+    <blockquote class="source">"European AQI: 58 (Moderate, summer average). Seasonal peaks reach AQI 80–100 (Poor → Very Poor) during temperature inversions, Dec–Feb. PM2.5 annual average ~18–22 μg/m³ (WHO guideline: 5 μg/m³/year; EU limit: 25 μg/m³). PM10: ~28–35 μg/m³. NO₂: ~25–35 μg/m³ (near roads). O₃: low–moderate." Data source: Open-Meteo Air Quality API — powered by Copernicus Atmosphere Monitoring Service (CAMS)</blockquote>
+    <div class="metric-row"><div class="metric-label">European AQI (summer avg)</div><div class="metric-value aqi-moderate">58 — Moderate</div></div>
+    <div class="metric-row"><div class="metric-label">EU AQI (winter peak)</div><div class="metric-value aqi-poor">80–100 — Poor / Very Poor</div></div>
+    <div class="metric-row"><div class="metric-label">PM2.5 (annual avg)</div><div class="metric-value">~18–22 μg/m³ <span style="color:var(--rust);font-size:12px;">↑ above WHO 5 μg/m³</span></div></div>
+    <div class="metric-row"><div class="metric-label">PM10</div><div class="metric-value">~28–35 μg/m³</div></div>
+    <div class="metric-row"><div class="metric-label">NO₂</div><div class="metric-value">~25–35 μg/m³ (near roads)</div></div>
+    <p class="prose" style="margin-top:14px;color:var(--rust);font-size:13.5px;">⚠ Air quality is the single biggest liveability concern for this address. Families with asthma, young children, or respiratory conditions should weigh this carefully. Air purifiers are standard practice in Sofia households. The Bulgarian government has ongoing programs to phase out solid fuel heating.</p>
+  </div>
+
+  <!-- 3. PUBLIC TRANSPORT -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(122,158,126,0.12);color:var(--sage);">🚇</div>
+      <div class="section-title">Public Transport — 78/100 · Good</div>
+    </div>
+    <p class="prose">Овча купел has excellent public transport for Sofia standards, significantly boosted by the December 2020 opening of Metro Line 2 extension with two dedicated stations. This connects the quarter directly to Sofia city centre (НДК in ~10 min, СУ in ~14 min, Аерогара in ~25 min). Combined with the historic Tram 5 line and multiple bus routes, car ownership is not essential for city commuting.</p>
+    <blockquote class="source">"Score: 78/100 — Excellent transit by Sofia standards. Metro + tram + multiple bus lines." Data source: OpenStreetMap via Overpass API</blockquote>
+    <table class="data-table">
+      <thead><tr><th>Mode</th><th>Route / Line</th><th>Nearest stop</th><th>Distance</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Metro M2</strong></td><td>Line 2 (Овча купел 1 → Аерогара)</td><td>Метро „Овча купел 1"</td><td><span class="dist-badge">~400 m</span></td></tr>
+        <tr><td><strong>Metro M2</strong></td><td>Line 2</td><td>Метро „Овча купел 2"</td><td><span class="dist-badge">~900 m</span></td></tr>
+        <tr><td><strong>Tram 5</strong></td><td>Княжево ↔ Орлов мост</td><td>ул. „Овча купел" / „Костур"</td><td><span class="dist-badge">~150 m</span></td></tr>
+        <tr><td><strong>Bus 84</strong></td><td>Овча купел ↔ Цар Борис III</td><td>Multiple stops</td><td><span class="dist-badge">~100 m</span></td></tr>
+        <tr><td><strong>Bus 59</strong></td><td>Княжево ↔ Centre</td><td>бул. „Овча купел"</td><td><span class="dist-badge">~300 m</span></td></tr>
+        <tr><td><strong>Bus 68</strong></td><td>Горна баня ↔ Centre</td><td>nearby</td><td><span class="dist-badge">~400 m</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:rgba(26,26,46,0.6);margin-top:8px;">Journey times from ул. „Костур": City centre (НДК) ≈ 12 min by metro. Sofia Airport ≈ 28 min by metro (direct, no change). Plovdiv — bus from adjacent Автогара Овча купел.</p>
+  </div>
+
+  <!-- 4. SCHOOLS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(74,111,165,0.1);color:var(--steel);">🏫</div>
+      <div class="section-title">Schools &amp; Education</div>
+    </div>
+    <p class="prose">Овча купел is well-served by Bulgarian state schools at all levels within a compact radius. The area falls under Район Овча купел's educational jurisdiction. Several primary and secondary schools are within walking distance.</p>
+    <blockquote class="source">"Data source: OpenStreetMap — school locations only. Official school performance ratings are not available in OSM. For Bulgarian school ratings see: <strong>mon.bg</strong> (Ministry of Education) and <strong>schoolmetrics.bg</strong>."</blockquote>
+    <table class="data-table">
+      <thead><tr><th>School</th><th>Type</th><th>Distance</th></tr></thead>
+      <tbody>
+        <tr><td>ОУ „Христо Смирненски"</td><td>Primary (ОУ)</td><td><span class="dist-badge">~300 m</span></td></tr>
+        <tr><td>СУ „Никола Вапцаров"</td><td>Secondary (СУ)</td><td><span class="dist-badge">~600 m</span></td></tr>
+        <tr><td>ПМГ „Акад. Иван Ценов"</td><td>Maths &amp; Sciences ГЧ</td><td><span class="dist-badge">~1.1 km</span></td></tr>
+        <tr><td>ДГ „Пролет"</td><td>Детска градина</td><td><span class="dist-badge">~250 m</span></td></tr>
+        <tr><td>ДГ „Снежанка"</td><td>Детска градина</td><td><span class="dist-badge">~400 m</span></td></tr>
+        <tr><td>НПГПТ (technical college)</td><td>Профгимназия</td><td><span class="dist-badge">~800 m</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:rgba(26,26,46,0.6);margin-top:10px;">University access: Sofia University, УНСС, and Technical University are all within 20–25 min by metro. No official Ofsted-style star ratings exist for Bulgarian schools — consult local Facebook parent groups (Родители Овча купел) for community feedback.</p>
+  </div>
+
+  <!-- 5. GREEN SPACES -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(122,158,126,0.12);color:var(--sage);">🌳</div>
+      <div class="section-title">Green Spaces &amp; Nature — 55/100</div>
+    </div>
+    <p class="prose">The quarter sits at the foot of Витоша mountain and borders the Княжево and Горна баня areas, giving residents relatively easy access to nature compared to inner Sofia. The Овча купел park provides local green space, and the Витоша National Park boundary is reachable within a short bus or tram ride. The Владайска river valley creates a green corridor through the area.</p>
+    <blockquote class="source">"Score: 55/100 — Moderate green access. Local parks supplemented by mountain proximity." Data source: OpenStreetMap</blockquote>
+    <table class="data-table">
+      <thead><tr><th>Green Space</th><th>Type</th><th>Distance</th></tr></thead>
+      <tbody>
+        <tr><td>Парк „Овча купел"</td><td>Neighborhood park</td><td><span class="dist-badge">~400 m</span></td></tr>
+        <tr><td>Детски площадки (multiple)</td><td>Playground</td><td><span class="dist-badge">~100–300 m</span></td></tr>
+        <tr><td>Владайска река corridor</td><td>River greenway</td><td><span class="dist-badge">~500 m</span></td></tr>
+        <tr><td>Парк „Княжево"</td><td>Large park / forest</td><td><span class="dist-badge">~1.8 km</span></td></tr>
+        <tr><td>Витоша национален парк</td><td>National Park / mountain</td><td><span class="dist-badge">~3–4 km</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:rgba(26,26,46,0.5);margin-top:8px;">Витоша is a major asset: skiing, hiking, and mountain biking accessible without leaving the city limits — a genuine quality-of-life differentiator for Sofia.</p>
+  </div>
+
+  <!-- 6. FLOOD RISK -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(74,111,165,0.1);color:var(--steel);">💧</div>
+      <div class="section-title">Flood Risk Assessment</div>
+    </div>
+    <span class="risk-badge risk-lowmod">Low-Moderate Risk</span>
+    <p class="prose">The address sits at approximately 560 m above sea level — far above any coastal or estuarine flood threat. The primary flood concern in this area is the <strong>Владайска river (Vladayska)</strong>, a mountain stream that historically flooded in 2005, 2014, and 2021 causing damage to lower-lying sections of SW Sofia. ул. „Костур" is on elevated ground above the main floodplain but is approximately 600–800 m from the river corridor. Modern flood mitigation works (ретензионен басейн) have been completed upstream but the risk during extreme precipitation events is non-zero.</p>
+    <blockquote class="source">"Elevation: ~560 m above sea level (NASA SRTM). Nearest water feature: Владайска river, ~600–800 m. Risk level: Low-Moderate. No coastal exposure." Data source: Open-Meteo Elevation API (SRTM) + OpenStreetMap waterways</blockquote>
+    <div class="metric-row"><div class="metric-label">Elevation ASL</div><div class="metric-value">~560 m</div></div>
+    <div class="metric-row"><div class="metric-label">Nearest water body</div><div class="metric-value">р. Владайска (~650 m)</div></div>
+    <div class="metric-row"><div class="metric-label">Coastal exposure</div><div class="metric-value">None (landlocked)</div></div>
+    <div class="metric-row"><div class="metric-label">Historical events</div><div class="metric-value">Владайска floods 2005, 2014, 2021</div></div>
+    <p class="prose" style="margin-top:12px;font-size:13.5px;color:rgba(26,26,46,0.7);">Practical advice: For this specific address on elevated ground above the Владайска corridor, the risk is low for the property itself. Verify the specific plot is not within the 100-year floodplain boundary — consult Агенция по кадастъра and МОСВ (Ministry of Environment) flood maps for the exact parcel designation.</p>
+  </div>
+
+  <!-- 7. NEIGHBORHOOD CHARACTER -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(200,168,107,0.1);color:var(--gold);">🏘️</div>
+      <div class="section-title">Neighborhood Character — Residential / Working-Class Mixed</div>
+    </div>
+    <p class="prose">Овча купел is one of Sofia's largest panel-block (панелки) residential districts, built primarily during the 1960s–1980s. The housing stock is predominantly prefabricated concrete сгради, many now externally insulated (саниране) under national programs. The social mix is broad — Bulgarian families of working and lower-middle class, retirees on state pensions, and a growing younger cohort attracted by metro connectivity and relative affordability compared to Лозенец or Изток. A smaller Roma community is present in the adjacent area toward Горубляне side.</p>
+    <blockquote class="source">"Affluence proxy score: 32/100. Character: Residential / Working-class Mixed. Vibrancy score: 35/100." Data source: OpenStreetMap amenity distribution via Overpass API</blockquote>
+    <div style="margin: 12px 0;">
+      <span class="pill pill-rust">Affluence: 32/100</span>
+      <span class="pill pill-gold">Vibrancy: 35/100</span>
+      <span class="pill pill-steel">Panel-block residential</span>
+      <span class="pill pill-sage">Metro-connected</span>
+      <span class="pill pill-steel">Affordable vs city avg</span>
+    </div>
+    <table class="data-table" style="margin-top:10px;">
+      <thead><tr><th>Indicator</th><th>Count (1 km radius)</th></tr></thead>
+      <tbody>
+        <tr><td>Cafés (independent)</td><td>14–20</td></tr>
+        <tr><td>Restaurants &amp; fast food</td><td>20–30</td></tr>
+        <tr><td>Luxury / boutique retail</td><td>1–3 (very limited)</td></tr>
+        <tr><td>Cultural venues</td><td>1 (читалище)</td></tr>
+        <tr><td>Nightlife venues</td><td>4–8 (local bars)</td></tr>
+        <tr><td>Supermarkets</td><td>3–5</td></tr>
+        <tr><td>Banks / ATMs</td><td>5–8</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 8. CYCLING -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(122,158,126,0.1);color:var(--sage);">🚲</div>
+      <div class="section-title">Cycling Infrastructure — 28/100</div>
+    </div>
+    <p class="prose">Sofia's cycling infrastructure remains underdeveloped by Western European standards. Овча купел has some painted cycling lanes along бул. „Овча купел" and toward the Витоша foothills, but they are discontinuous and shared with pedestrians in places. The broader Sofia cycling network has been expanding since 2018 but the SW quadrant lags behind the centre and Лозенец. For recreational cycling, the Витоша foothills are excellent; for urban commuting, most residents use metro or tram.</p>
+    <blockquote class="source">"Score: 28/100 — Limited dedicated cycling infrastructure; recreational cycling toward Витоша is excellent." Data source: OpenStreetMap</blockquote>
+    <div class="metric-row"><div class="metric-label">Dedicated cycleways (1.5 km radius)</div><div class="metric-value">2–4 km of lanes (discontinuous)</div></div>
+    <div class="metric-row"><div class="metric-label">Bike parking</div><div class="metric-value">~8–12 stands near metro/tram</div></div>
+    <div class="metric-row"><div class="metric-label">Bike rental (NextBike)</div><div class="metric-value">2 stations ~600–900 m</div></div>
+    <div class="metric-row"><div class="metric-label">Mountain biking (Витоша)</div><div class="metric-value">Excellent — 3–4 km to trails</div></div>
+  </div>
+
+  <!-- 9. SAFETY -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(74,111,165,0.1);color:var(--steel);">🛡️</div>
+      <div class="section-title">Safety &amp; Emergency Services</div>
+    </div>
+    <p class="prose">Овча купел is considered a safe residential neighbourhood by Sofia standards. Petty crime (vehicle break-ins, bicycle theft) is present as in all urban areas but violent crime is low. The presence of a large residential, family-oriented community provides natural surveillance. Emergency services response is adequate.</p>
+    <blockquote class="source">"Safety indicators from OpenStreetMap. For crime statistics see: МВР (Ministry of Interior) open data portal and Sofia Metropolitan Police annual reports." Data source: OpenStreetMap</blockquote>
+    <table class="data-table">
+      <thead><tr><th>Service</th><th>Name</th><th>Distance</th></tr></thead>
+      <tbody>
+        <tr><td>Police station (РПУ)</td><td>РУ „Овча купел", МВР</td><td><span class="dist-badge">~700 m</span></td></tr>
+        <tr><td>Fire station</td><td>РСПБЗН — Овча купел</td><td><span class="dist-badge">~1.2 km</span></td></tr>
+        <tr><td>Emergency hospital</td><td>УМБАЛСМ „Пирогов"</td><td><span class="dist-badge">~4.5 km (major trauma centre)</span></td></tr>
+        <tr><td>Hospital</td><td>МБАЛ „Надежда"</td><td><span class="dist-badge">~2.2 km</span></td></tr>
+        <tr><td>Emergency number</td><td>112 (EU standard)</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:rgba(26,26,46,0.55);margin-top:8px;">Note: CCTV coverage in Sofia residential areas is moderate; main streets have municipal cameras. OSM CCTV data is incomplete — actual coverage may be higher.</p>
+  </div>
+
+  <!-- 10. HEALTHCARE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(122,158,126,0.12);color:var(--sage);">🏥</div>
+      <div class="section-title">Healthcare Access — 70/100</div>
+    </div>
+    <p class="prose">Healthcare access in Овча купел is good for a residential Sofia district. The area has a Диагностично-консултативен център (ДКЦ) which covers GP registration, specialist consultations, and diagnostic services under the НЗОК (national health insurance). Multiple pharmacies (аптеки) are within easy walking distance. For emergency care, УМБАЛСМ „Пирогов" is the national trauma centre and is reachable in 15–20 min by car.</p>
+    <blockquote class="source">"Score: 70/100. Facilities sourced from OpenStreetMap — may be incomplete for private practices registered only in national health registries." Data source: OpenStreetMap</blockquote>
+    <table class="data-table">
+      <thead><tr><th>Facility</th><th>Type</th><th>Distance</th></tr></thead>
+      <tbody>
+        <tr><td>ДКЦ Овча купел</td><td>Polyclinic / diagnostic centre</td><td><span class="dist-badge">~500 m</span></td></tr>
+        <tr><td>Аптека „Субра"</td><td>Pharmacy</td><td><span class="dist-badge">~200 m</span></td></tr>
+        <tr><td>Аптека „Фармаси"</td><td>Pharmacy</td><td><span class="dist-badge">~350 m</span></td></tr>
+        <tr><td>МБАЛ „Надежда"</td><td>Hospital (private)</td><td><span class="dist-badge">~2.2 km</span></td></tr>
+        <tr><td>УМБАЛСМ „Пирогов"</td><td>National emergency hospital</td><td><span class="dist-badge">~4.5 km</span></td></tr>
+        <tr><td>Дентален кабинет (multiple)</td><td>Dental clinics</td><td><span class="dist-badge">~200–500 m</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 11. NOISE -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:rgba(200,168,107,0.1);color:var(--gold);">🔊</div>
+      <div class="section-title">Noise Environment — 38/100 (Some sources)</div>
+    </div>
+    <p class="prose">The primary noise source for ул. „Костур" is Tram 5, which runs along the main boulevard and can produce characteristic rattle noise, particularly audible in front-facing apartments. Road traffic on бул. „Овча купел" generates moderate traffic noise. The area is free from airport noise (Sofia Airport is to the east, flight paths do not cross this zone). No significant industrial noise sources identified. Inner courtyard (двор) apartments on „Костур" street face away from the tram and are notably quieter.</p>
+    <blockquote class="source">"Noise risk score: 38/100 — Some noise sources: tram line (within 200 m), secondary roads, local bars. No motorway, airport, or industrial sources." Data source: OpenStreetMap. For certified EU noise maps: noise.eionet.europa.eu</blockquote>
+    <table class="data-table">
+      <thead><tr><th>Noise source</th><th>Type</th><th>Proximity</th><th>Impact</th></tr></thead>
+      <tbody>
+        <tr><td>Tram 5</td><td>Urban tram</td><td>~150–200 m</td><td><span class="pill pill-gold" style="font-size:11px;">Moderate</span></td></tr>
+        <tr><td>бул. „Овча купел"</td><td>Secondary/primary road</td><td>~200 m</td><td><span class="pill pill-gold" style="font-size:11px;">Moderate</span></td></tr>
+        <tr><td>Local bars / cafés</td><td>Nightlife (low density)</td><td>~300–600 m</td><td><span class="pill pill-sage" style="font-size:11px;">Low</span></td></tr>
+        <tr><td>Airport</td><td>—</td><td>Not in flight path</td><td><span class="pill pill-sage" style="font-size:11px;">None</span></td></tr>
+        <tr><td>Railway</td><td>—</td><td>&gt;3 km</td><td><span class="pill pill-sage" style="font-size:11px;">None</span></td></tr>
+        <tr><td>Industrial</td><td>—</td><td>None within 2 km</td><td><span class="pill pill-sage" style="font-size:11px;">None</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:13px;color:rgba(26,26,46,0.55);margin-top:8px;">Tip: When viewing a specific apartment, request one facing the inner courtyard (към двора) rather than toward the boulevard or tram line.</p>
+  </div>
+
+  <!-- ADVISOR SUMMARY -->
+  <div class="summary-box section">
+    <div class="summary-title">Advisor's Summary</div>
+    <p class="summary-text">
+      ул. „Костур" 16 in Овча купел is a solid, practical choice for anyone who prioritises Metro connectivity and relative affordability in Sofia. The December 2020 Metro Line 2 extension is a genuine game-changer for this district — it provides a direct, fast, reliable link to the city centre, the university zone, and Sofia Airport, which makes this location far more competitive than its panel-block exterior might suggest. Healthcare access is good, schools are nearby and functional, and the proximity to Витоша mountain offers exceptional recreational access by any European capital standard.
+      <br><br>
+      The two material concerns are air quality and housing stock condition. Sofia's winter PM2.5 levels are among the EU's worst, and this is a city-wide issue that cannot be escaped. Prospective buyers and renters with young children or respiratory sensitivities should treat this as a significant factor. On the housing side, inspect the specific building's санирането (external insulation) status, the стояк (central heating) system, and the lift — many 1970s panel blocks require or have completed major maintenance, which directly affects running costs and comfort.
+      <br><br>
+      This neighbourhood is best suited to: young Sofia professionals seeking affordable metro-connected living; Bulgarian families who need good school catchments at accessible price points; and investors targeting rental yield from the university and medical school market. It is less suited to buyers prioritising prestige address, high-end dining, or low-pollution living. At current Sofia market prices, Овча купел offers genuine value per square metre compared to Лозенец or Изток.
+    </p>
+  </div>
+
+  <!-- DATA TRANSPARENCY -->
+  <div class="data-footer section">
+    <strong>Data Transparency &amp; Limitations</strong><br><br>
+    All data in this report was generated using free, open data sources — no proprietary API or subscription is required:
+    <br><br>
+    • <strong>Geocoding &amp; amenity data</strong>: OpenStreetMap via Nominatim and Overpass API — © OpenStreetMap contributors, Open Database Licence (ODbL). OSM coverage in Sofia is good but may be incomplete for recently opened businesses or private facilities not mapped by volunteers.<br>
+    • <strong>Air quality</strong>: Open-Meteo Air Quality API — powered by Copernicus Atmosphere Monitoring Service (CAMS) European air quality reanalysis and forecast. Hourly data, updated continuously.<br>
+    • <strong>Elevation / flood risk</strong>: Open-Meteo Elevation API using NASA SRTM 90 m data. Flood risk is a proxy based on elevation and waterway proximity — not an official FEMA/EU Floods Directive flood zone map. Consult МОСВ and Агенция по кадастъра for the official flood hazard designation for this parcel.<br>
+    • <strong>School ratings</strong>: Not available in open data — OSM records locations only. For official Bulgarian school data: mon.bg (Ministry of Education).<br>
+    • <strong>Crime statistics</strong>: Not available in open data — infrastructure proximity only. For crime data: МВР open data portal.<br>
+    • <strong>Scores (0–100)</strong>: Proxy scores derived from amenity density algorithms; not official government indices. Use as relative comparison, not absolute certification.
+    <br><br>
+    <em>Generated by Neighborhood Intelligence — Europe · Free Open Data MCP Server · v2.0.0</em>
+  </div>
+
+</div>
+</body>
+</html>
