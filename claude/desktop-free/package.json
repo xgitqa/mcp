@@ -1,6 +1,6 @@
 {
   "name": "neighborhood-intelligence-europe",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Free, open-data Neighborhood Intelligence for any European location — no API key required",
   "type": "module",
   "main": "server/index.js",
